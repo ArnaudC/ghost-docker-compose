@@ -1,0 +1,38 @@
+{
+    "url": "http://localhost:2368",
+    "server": {
+        "port": 2368,
+        "host": "0.0.0.0"
+    },
+    "database": {
+        "client": "mysql",
+        "connection": {
+            "host": "mysql",
+            "port": 3306,
+            "user": "ghostusr",
+            "password": "mysqlpassword",
+            "database": "ghostdata",
+            "charset": "utf8mb4"
+        }
+    },
+    "mail": {
+        "from": "'Custom Name' <myemail@address.com>", 
+        "transport": "SMTP",
+        "logger": true,
+        "options": {
+            "host": "mailhog",
+            "secureConnection": false,
+            "port": 1025
+        }
+    },
+    "logging": {
+        "transports": [
+            "file",
+            "stdout"
+        ]
+    },
+    "process": "systemd",
+    "paths": {
+        "contentPath": "/var/lib/ghost/content"
+    }
+}

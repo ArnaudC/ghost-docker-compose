@@ -1,0 +1,54 @@
+version: '3'
+
+networks:
+    shared_backend:
+        name: shared_backend
+        # use a custom driver, with no options
+        driver: bridge
+
+services:
+  ghost:
+    image: ghost:latest
+    container_name: ghost
+    hostname: ghost
+    volumes:
+      - $PWD/ghost/config.production.json:/var/lib/ghost/config.production.json:z #overwrite default settings 
+      - ./ghost/content:/var/lib/ghost/content:z
+    ports:
+      - "2368:2368"
+    expose:
+    - "3306"
+    environment: # this section can be commented to start in dev mode by default
+      - NODE_ENV=production # set either production or development, then it will load the respective config
+    restart: always
+    links:
+      - mysql
+    networks:
+      - shared_backend
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    volumes:
+       - ./dbdata:/var/lib/mysql:z  # Persist storage
+    expose:
+      - "3306"
+    environment:
+      # Beware of special characters in password that can be interpreted by shell
+      - MYSQL_ROOT_PASSWORD=ghostpassword #specify your root pass
+      - MYSQL_DATABASE=ghostdata
+      - MYSQL_USER=ghostusr
+      - MYSQL_PASSWORD=mysqlpassword #please change this
+    restart: always
+    networks:
+      - shared_backend
+
+  mailhog:
+    image: mailhog/mailhog
+    expose:
+      - "1025"
+    ports:
+      - "8025:8025"
+      - 1025:1025
+    networks:
+      - shared_backend
