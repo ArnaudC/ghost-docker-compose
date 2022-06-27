@@ -9,4 +9,4 @@ Go to http://localhost:1025 to see mails.
 # Preview
 ![setup](img/setup.png)
 ![dashboard](img/dashboard.png)
-![newPost](img/dashboard.png)
+![newPost](img/newPost.png)
