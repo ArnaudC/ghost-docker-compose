@@ -7,6 +7,6 @@ Go to http://localhost:1025 to see mails.
 
 
 # Preview
-![setup](img/1.png)
-![dashboard](img/2.png)
-![newPost](img/3.png)
+![setup](img/setup.png)
+![dashboard](img/dashboard.png)
+![newPost](img/dashboard.png)
