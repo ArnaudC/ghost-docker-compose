@@ -1,0 +1,67 @@
+{{!< default}}
+
+<div class="gh-head-hero">
+    <section class="p-outer">
+        <div class="p-inner p-hero">
+            <div class="p-hero-left">
+                <div>
+                    <h1>Société Francophone de <span class="keyword">Neurogénétique</span> </h1>
+                    <p>
+                        Promouvoir les intérêts des acteurs francophones de la neurogénétique
+                    </p>
+                </div>
+                <div class="p-hero-buttons">
+                    {{! Launches the Ghost membership portal }}
+                    <button data-portal="signup">Adhérer à notre cause</button>
+                    {{! Link to an about page }}
+                    <a href="/about/">En savoir plus &rarr;</a>
+                </div>
+            </div>
+            <div class="p-hero-right">
+                {{! Loads the your cover image as defined in Ghost admin }}
+                <img src="{{img_url @site.cover_image size="m"}}" alt="Hands with gloves" />
+            </div>
+        </div>
+    </section>
+</div>
+
+<main class="gh-main gh-outer">
+
+    <div class="gh-inner">
+        <section class="gh-topic gh-topic-grid">
+            <h2 class="gh-topic-name">
+                {{#match pagination.pages ">" 1}}
+                    <a href="{{@site.url}}/page/2">
+                        A la <span class="keyword">une</span>
+                    </a>
+                {{else}}
+                    A la <span class="keyword">une</span>
+                {{/match}}
+            </h2>
+
+            <div class="gh-topic-content">
+                {{#get "posts" include="authors" limit="7"}}
+                    {{#foreach posts}}
+                        {{> "loop-grid"}}
+                    {{/foreach}}
+                {{/get}}
+            </div>
+
+            <footer class="gh-topic-footer">
+                {{#match pagination.pages ">" 1}}
+                    <a class="gh-topic-link" href="{{@site.url}}/page/2">Voir plus {{> "icons/arrow"}}</a>
+                {{/match}}
+            </footer>
+        </section>
+
+        {{#get "tags"}}
+            {{#if tags}}
+                <div class="gh-topic-list">
+                    {{#foreach tags}}
+                        {{> "topic-minimal"}}
+                    {{/foreach}}
+                </div>
+            {{/if}}
+        {{/get}}
+    </div>
+</main>

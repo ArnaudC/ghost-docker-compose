@@ -1,2 +1,5 @@
 dbdata
 ghost/content/logs
+/.idea/
+/headline/dist/
+/headline/node_modules/

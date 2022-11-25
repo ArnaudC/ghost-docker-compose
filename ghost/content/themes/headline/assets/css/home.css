@@ -1,0 +1,120 @@
+/* These styles override the Casper navbar defaults */
+.gh-head-hero {
+    background-color: #F3FCFD;
+    margin-top: -80px;
+    padding-top: 80px;
+    z-index: -10;
+}
+
+.home-template.has-cover .gh-head-button {
+    color: #fff;
+    background-color: var(--color-darkgrey);
+}
+
+/* Define the size of the sections */
+.p-outer {
+    padding: 8vmin max(4vmin, 20px) 0;
+}
+
+.p-inner {
+    max-width: 1200px; /* Defines the max width of your content */
+    margin-inline: auto; /* Centers the content */
+}
+
+/* Hero section */
+.p-hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.2vmin;
+}
+
+.p-hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.p-hero-right {
+    align-self: end;
+    justify-self: end;
+}
+
+.p-hero-right img {
+    display: none;
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover; /* Fills the container with the image */
+    /*transform: translateY(24px); !* Move the image slightly to create an offset effect *!*/
+}
+
+.p-hero h1 {
+    margin-bottom: 4rem;
+}
+
+.p-hero p {
+    font-size: 20px;
+    line-height: 1.5;
+    color: #69707D;
+    margin-top: 1.6rem;
+}
+
+.p-hero p + p {
+    margin-top: 1.6rem;
+}
+
+.keyword {
+    color: var(--ghost-accent-color);
+}
+
+.p-hero-left a {
+    color: var(--ghost-accent-color); /* Color links with the Ghost accent color defined in Admin */
+}
+
+.p-hero-buttons {
+    display: flex;
+    gap: 1.6rem;
+    margin-block-start: 8vmin;
+}
+
+.p-hero-buttons button,
+.p-hero-buttons a {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.005em;
+    background-color: var(--ghost-accent-color);
+    border: 3px solid var(--ghost-accent-color);
+    border-radius: 6px;
+}
+
+.p-hero-buttons a {
+    color: var(--ghost-accent-color);
+    background-color: transparent;
+    border: 3px solid;
+    transition: all 0.2s;
+}
+
+.p-hero-buttons a:hover {
+    color: #fff;
+    background-color: var(--ghost-accent-color);
+    border-color: var(--ghost-accent-color);
+}
+
+/* Change layout at larger viewport sizes */
+@media (min-width: 768px) {
+    .p-hero {
+        grid-template-columns: 1fr 1fr; /* Hero section has 2 columns */
+    }
+
+    .p-hero-right img {
+        display: initial;
+        max-height: 75%;
+        aspect-ratio: 1 / 1; /* Make the image a square */
+        /*filter: drop-shadow(2px 3px 10px rgb(0 0 0 / 0.25)); !* Add a shadow*!*/
+        object-fit: contain; /* But also ensure it's not cropped */
+        object-position: bottom; /* Position image to far right */
+    }
+}
